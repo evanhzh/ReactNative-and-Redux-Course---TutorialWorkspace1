@@ -35,9 +35,10 @@ class EmployeeEdit extends Component {
 		this.setState({ showModal: false });
 	}
 
-	componentWilMount() {
-		_.each(this.props.employee, (value, prop) => {
-			this.props.employeeUpdate({ prop, value });
+	componentWillMount() {
+		console.log(this.props.employee);
+		_.each(this.props.employee, (value, props) => {
+			this.props.employeeUpdate({ props, value });
 		});
 	}
 

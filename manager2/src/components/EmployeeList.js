@@ -1,12 +1,12 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Text, FlatList } from 'react-native';
+import { FlatList } from 'react-native';
 import { employeesFetch } from '../actions';
 import ListItem from './ListItem';
 
 class EmployeeList extends Component {
-	componentWilMount() {
+	componentWillMount() {
 		this.props.employeesFetch();
 	}
 
@@ -15,7 +15,11 @@ class EmployeeList extends Component {
 	}
 	render() {
 		return (
-			<FlatList data={this.props.employees} renderItem={this.renderItem} />
+			<FlatList
+				data={this.props.employees}
+				renderItem={this.renderItem}
+				keyExtractor={item => item.uid}
+			/>
 		);
 	}
 }
